@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Workout Timer</title>
+</head>
+<body>
+    <h1>Workout Timer</h1>
+    <div id="timer">00:00</div>
+    <button onclick="startTimer()">Start Workout</button>
+    <button onclick="stopTimer()">Stop Workout</button>
+
+    <script>
+        let timerInterval;
+        let seconds = 0;
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(seconds / 60);
+            const secondsDisplay = (seconds % 60).toString().padStart(2, '0');
+            document.getElementById('timer').innerText = `${minutes}:${secondsDisplay}`;
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            seconds = 0;
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                seconds++;
+                updateTimerDisplay();
+            }, 1000);
+
+            fetch('/start', { method: 'GET' })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error starting timer:', error));
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            fetch('/stop', { method: 'GET' })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error('Error stopping timer:', error));
+        }
+    </script>
+</body>
+</html>
