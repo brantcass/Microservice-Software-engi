@@ -19,9 +19,12 @@ The timer will also break for 45 sec every 3 minutes to represent a HITT workout
 
 TO RECEIVE DATA:
 
-To start enter in the command: node Timer.js
+- To start enter in the command: node Timer.js
 
-This is where the timer will be displayed, it will also take breaks to signify when to break for a workout and when to resume
+- This is where the timer will be displayed, it will also take breaks to signify when to break for a workout and when to resume
+
+
+UML SEQUENCE:
 
 
 ![UMLSprint](https://github.com/brantcass/Microservice-Software-engi/assets/94635676/e8ae9974-e65f-415d-b6fc-8cb7a1c9699d)
